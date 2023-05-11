@@ -20,7 +20,7 @@ from telethon import events , Button
 from telethon.errors.rpcerrorlist import UserNotParticipantError, FloodWaitError
 from telethon.tl.functions.channels import GetParticipantRequest
 
-from .. import Drone, AUTH_USERS, ACCESS_CHANNEL, MONGODB_URI
+from .. import Drone, AUTH_USERS, ACCESS_CHANNEL, MONGODB_URI, FORCESUB, LOG_ID
 
 from main.Database.database import Database
 
@@ -30,12 +30,12 @@ def mention(name, id):
 #Forcesub-----------------------------------------------------------------------------------
 
 async def force_sub(id):
-    FORCESUB = config("FORCESUB", default=None)
+    FSUB = FORCESUB
     if not str(FORCESUB).startswith("-100"):
-        FORCESUB = int("-100" + str(FORCESUB))
+        FSUB = int("-100" + str(FORCESUB))
     ok = False
     try:
-        x = await Drone(GetParticipantRequest(channel=int(FORCESUB), participant=int(id)))
+        x = await Drone(GetParticipantRequest(channel=int(FSUB), participant=int(id)))
         left = x.stringify()
         if 'left' in left:
             ok = True
@@ -91,7 +91,6 @@ async def heroku_restart():
 #Logging events on tg---------------------------------------------------------------------------------------------
 
 async def LOG_START(event, ps_name):
-    LOG_ID = config("LOG_ID", default=None)
     chat = LOG_ID
     if not str(LOG_ID).startswith("-100"):
         chat = int("-100" + str(LOG_ID))
@@ -101,7 +100,6 @@ async def LOG_START(event, ps_name):
     return xx
 
 async def LOG_END(event, ps_name):
-    LOG_ID = config("LOG_ID", default=None)
     chat = LOG_ID
     if not str(LOG_ID).startswith("-100"):
         chat = int("-100" + str(LOG_ID))
