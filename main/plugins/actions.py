@@ -71,8 +71,10 @@ async def rem_thumbnail(event):
     
 #Heroku--------------------------------------------------------------------------------------------------------------
   
-"""
+
 async def heroku_restart():
+    print("(:)")
+    """
     HEROKU_API = config("HEROKU_API", default=None)
     HEROKU_APP_NAME = config("HEROKU_APP_NAME", default=None)
     x = None
