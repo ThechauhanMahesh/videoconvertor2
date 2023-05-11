@@ -70,7 +70,8 @@ async def rem_thumbnail(event):
     await edit.edit('Removed!')
     
 #Heroku--------------------------------------------------------------------------------------------------------------
-   
+  
+"""
 async def heroku_restart():
     HEROKU_API = config("HEROKU_API", default=None)
     HEROKU_APP_NAME = config("HEROKU_APP_NAME", default=None)
@@ -87,7 +88,7 @@ async def heroku_restart():
             print(e)
             x = False
     return x
-
+"""
 #Logging events on tg---------------------------------------------------------------------------------------------
 
 async def LOG_START(event, ps_name):
