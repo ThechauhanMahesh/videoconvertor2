@@ -20,7 +20,7 @@ from telethon import events , Button
 from telethon.errors.rpcerrorlist import UserNotParticipantError, FloodWaitError
 from telethon.tl.functions.channels import GetParticipantRequest
 
-from .. import Drone, AUTH_USERS, ACCESS_CHANNEL, MONGODB_URI, FORCESUB, LOG_ID, FORCESUB
+from .. import Drone, AUTH_USERS, ACCESS_CHANNEL, MONGODB_URI, FORCESUB, LOG_ID, FORCESUB2
 
 from main.Database.database import Database
 
