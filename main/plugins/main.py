@@ -34,6 +34,8 @@ from LOCAL.localisation import source_text, SUPPORT_LINK
 #Don't be a MF by stealing someone's hardwork.
 forcesubtext = f"Hey there!To use this bot you've to join @{FORCESUB_UN}.\n\nAlso join @DroneBots."
 
+forcesubtext2 = "Buy subscription from @ChauhanMahesh_bot"
+
 @Drone.on(events.NewMessage(incoming=True,func=lambda e: e.is_private))
 async def compin(event):
     db = Database(MONGODB_URI, 'videoconvertor')
@@ -71,6 +73,9 @@ async def compin(event):
     
 @Drone.on(events.callbackquery.CallbackQuery(data="encode"))
 async def _encode(event):
+    ok = await force_sub2(event.sender_id)
+    if ok is True:
+        return await event.reply(forcesubtext2)
     await event.edit("**🔀ENCODE**",
                     buttons=[
                         [Button.inline("240p", data="240"),
@@ -83,6 +88,9 @@ async def _encode(event):
      
 @Drone.on(events.callbackquery.CallbackQuery(data="compress"))
 async def _compress(event):
+    ok = await force_sub2(event.sender_id)
+    if ok is True:
+        return await event.reply(forcesubtext2)
     await event.edit("**🗜COMPRESS**",
                     buttons=[
                         [Button.inline("HEVC COMPRESS", data="hcomp"),
