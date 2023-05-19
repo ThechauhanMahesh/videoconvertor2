@@ -12,6 +12,7 @@ API_HASH = "32b6f41a4bf740efed2d4ce911f145c7"
 BOT_TOKEN = "5031588187:AAGf3XLCvPZH6DVtaEBpr-Dghv7lDNlRQOE"
 BOT_UN = "VideoConvertorRobot"
 FORCESUB = int("-1001581768849")
+FORCESUB2 = int("-1001733727045")
 FORCESUB_UN = "DroneBots"
 ACCESS_CHANNEL = int("-1001768362393")
 MONGODB_URI = "mongodb+srv://Vasusen:darkmaahi@cluster0.o7uqb.mongodb.net/cluster0?retryWrites=true&w=majority"
