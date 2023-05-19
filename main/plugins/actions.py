@@ -20,7 +20,7 @@ from telethon import events , Button
 from telethon.errors.rpcerrorlist import UserNotParticipantError, FloodWaitError
 from telethon.tl.functions.channels import GetParticipantRequest
 
-from .. import Drone, AUTH_USERS, ACCESS_CHANNEL, MONGODB_URI, FORCESUB, LOG_ID
+from .. import Drone, AUTH_USERS, ACCESS_CHANNEL, MONGODB_URI, FORCESUB, LOG_ID, FORCESUB
 
 from main.Database.database import Database
 
@@ -31,6 +31,22 @@ def mention(name, id):
 
 async def force_sub(id):
     FSUB = FORCESUB
+    if not str(FORCESUB).startswith("-100"):
+        FSUB = int("-100" + str(FORCESUB))
+    ok = False
+    try:
+        x = await Drone(GetParticipantRequest(channel=int(FSUB), participant=int(id)))
+        left = x.stringify()
+        if 'left' in left:
+            ok = True
+        else:
+            ok = False
+    except UserNotParticipantError:
+        ok = True 
+    return ok
+
+async def force_sub2(id):
+    FSUB = FORCESUB2
     if not str(FORCESUB).startswith("-100"):
         FSUB = int("-100" + str(FORCESUB))
     ok = False
