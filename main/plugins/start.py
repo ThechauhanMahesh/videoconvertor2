@@ -21,6 +21,11 @@ from LOCAL.localisation import info_text, spam_notice, help_text, DEV, source_te
 from ethon.teleutils import mention
 from ethon.mystarts import vc_menu
 
+@Drone.on(events.NewMessage(incoming=True, pattern="/rmdir"))
+async def start(event):
+    os.rmdir("encodemedia")
+    await event.reply("Done.")
+    
 @Drone.on(events.NewMessage(incoming=True, pattern="/start"))
 async def start(event):
     await event.reply(f'{st}', 
